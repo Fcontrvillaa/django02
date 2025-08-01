@@ -2,53 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<h1>, initial-scale=1.0">
-    {% include "app/componentes/scrips.html" %}
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include "app/componentes/scripts.html" %}
+    <title>home</title>
 </head>
-
 <body>
     {% include "app/componentes/header.html" %}
-    
-<h1>pantalla home</h1>
-
-<!-- Section-->
-        <section class="py-5">
-            
+     <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     {% for producto in productos %}
                     <div class="col mb-5">
-                        <div class="card" style="width: 18rem;">
-                        <img src="{{producto.imagen.url}} " class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{producto.nombre}}</h5>
-                            <p class="card-text">{{producto.descripcion}}.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Stock: {{producto.stock}}</li>
-                            <li class="list-group-item">Precio: ${{producto.stock}}</li>
-                            
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                           
-                        </div>
-                
+                        <div class="card h-100">
+                            <!-- Product image-->
+                             <a href="{% url 'detalle' producto.pk%}
+                            <img class="card-img-top" src="{{producto.imagen.url}}" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{producto.nombre}}</h5>
+                                    <!-- Product price-->
+                                    {{producto.precio}}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                     {% endfor %}
-                    
+                    {% endfor %}
                 </div>
-
             </div>
-            
-           
         </section>
-
-{% include "app/componentes/footer.html" %}
-
+    {% include "app/componentes/footer.html" %}
 </body>
 </html>
